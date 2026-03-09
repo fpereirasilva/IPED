@@ -1,173 +1,173 @@
-﻿﻿########################################################################
-# Processing Settings
+﻿########################################################################
+# Configurações de Processamento
 ########################################################################
 
-# Enables file hashes calculation.
+# Habilita o cálculo de hashes dos arquivos.
 enableHash = true
 
-# Enables photoDNA hash calculation. If you have rights to use it (law enforcement that fight against child exploitation)
-# and have received the library, you must put it into plugins folder
+# Habilita o cálculo do hash photoDNA. Se você tem direito de usá-lo (forças policiais que combatem a exploração infantil)
+# e recebeu a biblioteca, você deve colocá-la na pasta de plugins.
 enablePhotoDNA = false
 
-# Enables hash lookup on IPED database.
+# Habilita a consulta de hashes no banco de dados do IPED.
 enableHashDBLookup = false
 
-# Enables photoDNA lookup on IPED hash database.
+# Habilita a consulta de photoDNA no banco de dados de hashes do IPED.
 enablePhotoDNALookup = false
 
-# Enables nudity detection. For each image it creates attributes "nudityScore" (1 to 1000)
-# and "nudityClass" (1 to 5) for ranking and/or filtering.
+# Habilita a detecção de nudez. Para cada imagem, cria os atributos "nudityScore" (1 a 1000)
+# e "nudityClass" (1 a 5) para classificação e/ou filtragem.
 enableLedDie = false
 
-# [Experimental] Enables nudity detection using Yahoo OpenNSFW deeplearning algorithm.
-# You may install python and some dependencies to enable it, see https://github.com/sepinf-inc/IPED/wiki/User-Manual#python-modules
-# This is more than 1 order of magnitude slower than LedDie algorithm on the CPU, using a good GPU is highly recommended.
-# It gives higher scores than LedDie algorithm for images/videos with genitals or explicit sex, mainly because of training dataset differences.
-# An attribute nsfw_nudity_score from 0 to 100 will be created.
+# [Experimental] Habilita a detecção de nudez usando o algoritmo de deep learning Yahoo OpenNSFW.
+# Pode ser necessário instalar o Python e algumas dependências, veja https://github.com/sepinf-inc/IPED/wiki/User-Manual#python-modules
+# Isso é mais de 1 ordem de magnitude mais lento que o algoritmo LedDie na CPU, usar uma boa GPU é altamente recomendado.
+# Ele atribui pontuações mais altas que o algoritmo LedDie para imagens/vídeos com genitais ou sexo explícito, principalmente por diferenças no conjunto de treinamento.
+# Um atributo nsfw_nudity_score de 0 a 100 será criado.
 enableYahooNSFWDetection = false
 
-# [Experimental] Detects Child Sexual Abuse Material (CSAM) using a TensorFlow, PyTorch or ONNX AI model.
+# [Experimental] Detecta Material de Abuso Sexual Infantil (CSAM) usando um modelo de IA TensorFlow, PyTorch ou ONNX.
 #
-# Prerequisites: Python and the TensorFlow, PyTorch or ONNX library, generated thumbnails for images and videos, file hashes
+# Pré-requisitos: Python e a biblioteca TensorFlow, PyTorch ou ONNX, miniaturas geradas para imagens e vídeos, hashes dos arquivos
 #
-# This feature assigns the following properties to the image and video files: 
-#     ai:csamDetector:label - classification, possible values are csam, porn or other
-#     ai:csamDetector:csam, ai:csamDetector:porn, ai:csamDetector:other - confidence from 0 to 100 to each category
-# To video files the following properties are added, as well:
-#     ai:csamDetector:triggerFrame - frame number with the most confidence from the video thumbs
-#     ai:csamDetector:hitPercentage - percentagem of the total frames analyzed from the csam or porn categories
-#     ai:csamDetector:avgConfidence - average of all the confidences of the chosen categorization
+# Esta funcionalidade atribui as seguintes propriedades aos arquivos de imagem e vídeo:
+#     ai:csamDetector:label - classificação, valores possíveis são csam, porn ou other
+#     ai:csamDetector:csam, ai:csamDetector:porn, ai:csamDetector:other - confiança de 0 a 100 para cada categoria
+# Para arquivos de vídeo, as seguintes propriedades também são adicionadas:
+#     ai:csamDetector:triggerFrame - número do quadro com maior confiança entre as miniaturas do vídeo
+#     ai:csamDetector:hitPercentage - percentual do total de quadros analisados das categorias csam ou porn
+#     ai:csamDetector:avgConfidence - média de todas as confianças da categorização escolhida
 #
-# To change the model to be used and other parameters edit file in conf/CSAMDetector.txt
+# Para alterar o modelo a ser usado e outros parâmetros, edite o arquivo conf/CSAMDetector.txt
 #
 enableCSAMDetector = false
 
-# Enables QRcode detection and decoding
+# Habilita a detecção e decodificação de QRCode.
 enableQRCode = false
 
-# Ignore and exclude duplicated files with same hash from the processing and from the case. 
-# WARNING: This feature is inherently DANGEROUS, as it could exclude from the case duplicated files with
-# different metadata (name, path, dates) like email attachments or files in relevant folders. See #574 and #931.
+# Ignora e exclui arquivos duplicados com o mesmo hash do processamento e do caso.
+# ATENÇÃO: Esta funcionalidade é inerentemente PERIGOSA, pois pode excluir do caso arquivos duplicados com
+# metadados diferentes (nome, caminho, datas) como anexos de e-mail ou arquivos em pastas relevantes. Veja #574 e #931.
 ignoreDuplicates = false
 
-# Exports the properties of all files in the case to file "Lista de Arquivos.csv"
+# Exporta as propriedades de todos os arquivos do caso para o arquivo "Lista de Arquivos.csv"
 exportFileProps = true
 
-# Processes the signatures of files
+# Processa as assinaturas dos arquivos.
 processFileSignatures = true
 
-# Enables parsing of files contents. It's necessary for several functions like
-# containers expansion, detection of encrypted content, metadata indexing, previews generation, etc.
+# Habilita o parsing do conteúdo dos arquivos. É necessário para diversas funções como
+# expansão de contêineres, detecção de conteúdo criptografado, indexação de metadados, geração de pré-visualizações, etc.
 enableFileParsing = true
 
-# Expands containers, like compressed files, e-mail boxes, emails e MS-Office documents.
-# File types to be expanded can be modified in file "conf/CategoriesToExpand.txt"
+# Expande contêineres, como arquivos compactados, caixas de e-mail, e-mails e documentos MS-Office.
+# Os tipos de arquivo a serem expandidos podem ser modificados no arquivo "conf/CategoriesToExpand.txt"
 expandContainers = true
 
-# Process supported disk images (like dd, e01, vhd, vmdk) contained in the main evidence recursively.
-# Splitted images and snapshots are not supported for now.
+# Processa imagens de disco suportadas (como dd, e01, vhd, vmdk) contidas na evidência principal recursivamente.
+# Imagens divididas e snapshots não são suportados por enquanto.
 processEmbeddedDisks = true
 
-# Searches texts extracted from items by regular expressions 
-# like social numbers, emails, URLs, credit cards, money values, etc. 
-# New expressions can be configured in file "conf/RegexConfig.txt"
+# Pesquisa textos extraídos dos itens por expressões regulares
+# como CPF, e-mails, URLs, cartões de crédito, valores monetários, etc.
+# Novas expressões podem ser configuradas no arquivo "conf/RegexConfig.txt"
 enableRegexSearch = true
 
-# Enables automatic file exporting to case folder based on categories or keywords.
-# If enabled, just the exported files are included in case, others are ignored, and the case becomes datasource independent.
-# Relevant categories and keywords can be configured in CategoriesToExport.txt and KeywordsToExport.txt.
+# Habilita a exportação automática de arquivos para a pasta do caso baseado em categorias ou palavras-chave.
+# Se habilitado, apenas os arquivos exportados são incluídos no caso, os demais são ignorados, e o caso se torna independente da fonte de dados.
+# Categorias e palavras-chave relevantes podem ser configuradas em CategoriesToExport.txt e KeywordsToExport.txt.
 enableAutomaticExportFiles = false
 
-# Enables detection of more than 70 idioms in document files.
+# Habilita a detecção de mais de 70 idiomas em arquivos de documentos.
 enableLanguageDetect = true
 
-# Feature to recognize named entities: people, organizations or places.
-# StanfordCoreNLP 3.8 language models must be downloaded from https://stanfordnlp.github.io/CoreNLP/history.html and put in plugins folder.
-# This feature is CPU heavy, it can increase processing time by 4x.
-# Advanced settings can be modified in "conf/NamedEntityRecognitionConfig.txt" file.
+# Funcionalidade para reconhecer entidades nomeadas: pessoas, organizações ou lugares.
+# Os modelos de linguagem do StanfordCoreNLP 3.8 devem ser baixados de https://stanfordnlp.github.io/CoreNLP/history.html e colocados na pasta de plugins.
+# Esta funcionalidade consome muita CPU, podendo aumentar o tempo de processamento em até 4x.
+# Configurações avançadas podem ser modificadas no arquivo "conf/NamedEntityRecognitionConfig.txt".
 enableNamedEntityRecogniton = false
 
-# Feature to create link graphs of communications (calls, messages, emails...)
-# Optionally it can create entities and links based on nearby regex hits (experimental). It could be enabled in conf/GraphConfig.json
+# Funcionalidade para criar grafos de vínculos de comunicações (chamadas, mensagens, e-mails...)
+# Opcionalmente pode criar entidades e vínculos baseados em ocorrências próximas de expressões regulares (experimental). Pode ser habilitado em conf/GraphConfig.json
 enableGraphGeneration = true
 
-# Perform test for randomness of binary items and unknown file types.
-# This is used to detect possible encrypted items.
-# Also makes indexing faster and reduces index size, specially when indexing unallocated space.
-# May cause loss of hits surrounded by "random" content.
+# Realiza teste de aleatoriedade em itens binários e tipos de arquivo desconhecidos.
+# Isto é usado para detectar possíveis itens criptografados.
+# Também torna a indexação mais rápida e reduz o tamanho do índice, especialmente ao indexar espaço não alocado.
+# Pode causar perda de ocorrências cercadas por conteúdo "aleatório".
 entropyTest = true
 
-# Indexes files contents. If disabled, indexes only the properties of files.
+# Indexa o conteúdo dos arquivos. Se desabilitado, indexa apenas as propriedades dos arquivos.
 indexFileContents = true
 
-# Enables indexing to an ElasticSearch/OpenSearch cluster.
-# You must configure at least host/port options in conf/ElasticSearchConfig.txt
+# Habilita a indexação em um cluster ElasticSearch/OpenSearch.
+# Você deve configurar pelo menos as opções de host/porta em conf/ElasticSearchConfig.txt
 enableIndexToElasticSearch = false
 
-# Enables exporting files to MinIO object storage cluster.
-# You must configure at least host/port options in conf/MinIOConfig.txt
+# Habilita a exportação de arquivos para o cluster de armazenamento de objetos MinIO.
+# Você deve configurar pelo menos as opções de host/porta em conf/MinIOConfig.txt
 enableMinIO = false
 
-# Enables OCR on images and scanned PDF files. It can increase processing time a lot.
-# OCR language dictionary and other advanced configurations can be found in conf/OCRConfig.txt.
+# Habilita OCR em imagens e arquivos PDF digitalizados. Pode aumentar muito o tempo de processamento.
+# O dicionário de idioma do OCR e outras configurações avançadas podem ser encontrados em conf/OCRConfig.txt.
 enableOCR = false
 
-# Enables audio transcription.
-# Default implementation uses VOSK transcription on local CPU (faster but bad accuracy).
-# You can change the algorithm into conf/AudioTranscriptConfig.txt:
-# - Wav2Vec2 algorithm (slower and good accuracy)
-# - Whisper algorithm (much slower but better accuracy)
-# - Google Cloud (about $1.00 per hour cost)
-# - Microsoft Azure (about $1.00 per hour cost)
+# Habilita a transcrição de áudio.
+# A implementação padrão usa a transcrição VOSK na CPU local (mais rápida, mas com menor precisão).
+# Você pode alterar o algoritmo em conf/AudioTranscriptConfig.txt:
+# - Algoritmo Wav2Vec2 (mais lento e boa precisão)
+# - Algoritmo Whisper (muito mais lento, mas melhor precisão)
+# - Google Cloud (custo de aproximadamente US$1,00 por hora)
+# - Microsoft Azure (custo de aproximadamente US$1,00 por hora)
 enableAudioTranscription = false
 
-# Enables carving. "addUnallocated" must be enabled to scan unallocated space.
-# By default, our carving module scans many places in the evidence for deleted or embedded files. 
-# Places to scan and file types to recover can be configured in "conf/CarverConfig.xml"
+# Habilita o data carving. "addUnallocated" deve estar habilitado para varrer o espaço não alocado.
+# Por padrão, nosso módulo de carving varre muitos locais na evidência em busca de arquivos deletados ou embutidos.
+# Locais a serem varridos e tipos de arquivo a serem recuperados podem ser configurados em "conf/CarverConfig.xml"
 enableCarving = false
 
-# Enables carving that retrieves known files from the LED base, based on the beginning (64K) of the file.
-# It's necessary to enable "addUnallocated" and to configure "hashesDB" (with LED hashes data imported).
+# Habilita o carving que recupera arquivos conhecidos da base LED, baseado no início (64K) do arquivo.
+# É necessário habilitar "addUnallocated" e configurar "hashesDB" (com dados de hashes LED importados).
 enableLedCarving = false
 
-# Enables specific carving of e-Mule "known.met" files. "addUnallocated" must be enabled.
+# Habilita o carving específico de arquivos "known.met" do e-Mule. "addUnallocated" deve estar habilitado.
 enableKnownMetCarving = false
 
-# Enables the generation of images thumbnails during processing.
-# It can slow down processing, but strongly speeds up image preview in the gallery
+# Habilita a geração de miniaturas de imagens durante o processamento.
+# Pode tornar o processamento mais lento, mas acelera significativamente a pré-visualização de imagens na galeria.
 enableImageThumbs = true
 
-# Enables the generation of images features during processing, allowing the search
-# for visually similar images. "enableImageThumbs" must be enabled.
+# Habilita a geração de características de imagens durante o processamento, permitindo a busca
+# por imagens visualmente similares. "enableImageThumbs" deve estar habilitado.
 enableImageSimilarity = false
 
-# Enables face recognition feature.
-# You may install python and some dependencies, see https://github.com/sepinf-inc/IPED/wiki/User-Manual#facerecognition
-# Advanced configuration options can be found in conf/FaceRecognitionConfig.txt.
-# If enabled, you can search for faces from the analysis interface, check the options menu.
+# Habilita a funcionalidade de reconhecimento facial.
+# Pode ser necessário instalar o Python e algumas dependências, veja https://github.com/sepinf-inc/IPED/wiki/User-Manual#facerecognition
+# Opções de configuração avançadas podem ser encontradas em conf/FaceRecognitionConfig.txt.
+# Se habilitado, você pode buscar faces a partir da interface de análise, verifique o menu de opções.
 enableFaceRecognition = false
 
-# Enables age estimation feature.
-# You may install python and some dependencies, see https://github.com/sepinf-inc/IPED/wiki/User-Manual#AgeEstimation
-# Advanced configuration options can be found in conf/AgeEstimationConfig.txt.
+# Habilita a funcionalidade de estimativa de idade.
+# Pode ser necessário instalar o Python e algumas dependências, veja https://github.com/sepinf-inc/IPED/wiki/User-Manual#AgeEstimation
+# Opções de configuração avançadas podem ser encontradas em conf/AgeEstimationConfig.txt.
 enableAgeEstimation = false
 
-# Enables searching for crypto hardware wallets.
+# Habilita a busca por carteiras de hardware de criptomoedas.
 enableSearchHardwareWallets = true
 
-# Enables extraction of image frames from video files
-# Extraction settings can be modified in file "conf/VideoThumbsConfig.txt"
+# Habilita a extração de quadros de imagem de arquivos de vídeo.
+# As configurações de extração podem ser modificadas no arquivo "conf/VideoThumbsConfig.txt"
 enableVideoThumbs = true
 
-# [Experimental] Enables thumbnail creation for PDFs and many formats supported by LibreOffice.
-# Advanced configurations can be found at conf/DocThumbsConfig.txt.
+# [Experimental] Habilita a criação de miniaturas para PDFs e diversos formatos suportados pelo LibreOffice.
+# Configurações avançadas podem ser encontradas em conf/DocThumbsConfig.txt.
 enableDocThumbs = false
 
-# Enables HTML report generation on automatic extractions or from selected items.
-# Generation settings can be modified in file "conf/HTMLReportConfig.txt"
+# Habilita a geração de relatórios HTML em extrações automáticas ou a partir de itens selecionados.
+# As configurações de geração podem ser modificadas no arquivo "conf/HTMLReportConfig.txt"
 enableHTMLReport = true
 
-# Enables remote image classifier.
-# It performs classification of image and video files.
-# Advanced settings can be modified in file "conf/RemoteImageClassifierConfig.txt"
+# Habilita o classificador de imagens remoto.
+# Realiza a classificação de arquivos de imagem e vídeo.
+# Configurações avançadas podem ser modificadas no arquivo "conf/RemoteImageClassifierConfig.txt"
 enableRemoteImageClassifier = false

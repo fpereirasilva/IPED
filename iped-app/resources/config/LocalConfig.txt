@@ -1,35 +1,35 @@
-﻿########################################################################
-# Local environment configuration
+########################################################################
+# Configuração do ambiente local
 ########################################################################
 
-# Defines program localization/language. Currently there are localizations for 'en', 'pt-BR', 'it-IT', 'de-DE', 'es-AR' and 'fr-FR'.
-locale = en
+# Define a localização/idioma do programa. Atualmente existem localizações para 'en', 'pt-BR', 'it-IT', 'de-DE', 'es-AR' e 'fr-FR'.
+locale = pt-BR
 
-# Temporary directory for processing: "default" uses the system temporary folder.
-# Configure it on a folder free of antivirus, system indexing or restoring. Using a SSD disk is highly recommended.
+# Diretório temporário para processamento: "default" usa a pasta temporária do sistema.
+# Configure em uma pasta livre de antivírus, indexação do sistema ou restauração. Usar um disco SSD é altamente recomendado.
 indexTemp = default
 
-# Enable if indexTemp is on a SSD disk. Optimizations are made that can improve processing speed up to 2x.
-# Do not enable it if indexTemp is NOT on SSD or you will have performance problems.
+# Habilite se indexTemp estiver em um disco SSD. Otimizações são feitas que podem melhorar a velocidade de processamento em até 2x.
+# Não habilite se indexTemp NÃO estiver em SSD ou você terá problemas de desempenho.
 indexTempOnSSD = false
 
-# Enable if output/case folder is on SSD. If enabled, index is created directly in case folder,
-# not in indexTemp, so you will need less free space in temp folder.
+# Habilite se a pasta de saída/caso estiver em SSD. Se habilitado, o índice é criado diretamente na pasta do caso,
+# não no indexTemp, então você precisará de menos espaço livre na pasta temporária.
 outputOnSSD = false
 
-# Number of processing threads/workers: "default" uses the number of CPU logical cores.
-# If you have memory usage problems, you can decrease it or increase java heap memory (-Xms).
+# Número de threads/workers de processamento: "default" usa o número de núcleos lógicos da CPU.
+# Se você tiver problemas de uso de memória, pode diminuir ou aumentar a memória heap do Java (-Xms).
 numThreads = default
 
-# Full path for IPED hash database. It is highly recommended to store it on a fast disk, 
-# preferably SSD, and not the same used as "indexTemp", if other disk is available.
+# Caminho completo para o banco de dados de hashes do IPED. É altamente recomendado armazená-lo em um disco rápido,
+# preferencialmente SSD, e não no mesmo usado como "indexTemp", se outro disco estiver disponível.
 #hashesDB = C:/IPED/iped-hashes.db
 
-# Full path for sleuthkit-4.x.x.jar built on Linux OS.
-# It is distributed a Windows only version with some optimization patches.
-# It is recommended to apply the patch (in source folder) before building sleuthkit on Linux.
+# Caminho completo para o sleuthkit-4.x.x.jar compilado no Linux.
+# É distribuída uma versão apenas para Windows com alguns patches de otimização.
+# É recomendado aplicar o patch (na pasta source) antes de compilar o sleuthkit no Linux.
 #tskJarPath = /usr/local/share/java/sleuthkit-4.11.1.jar
 
-# Plugin folder for optional libs not embedded because of license restrictions.
-# They will be dynamically loaded at runtime.
+# Pasta de plugins para bibliotecas opcionais não embarcadas por restrições de licença.
+# Elas serão carregadas dinamicamente em tempo de execução.
 pluginFolder = ../plugins/
